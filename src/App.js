@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+
 
 function App() {
+  const [currCount,updateCount] = useState(0)
+
+  function decrementCount(){
+    updateCount(prevCount => prevCount-1)
+  }
+
+  function incrementCount(){
+    updateCount(prevCount => prevCount+1)
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{backgroundColor: '#FFC0CB'}}>
+      <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
+        <button onClick = {decrementCount} style = {{width: "100px"}}>-</button>
+        <span style={{ fontSize: 50 }}>{ currCount }</span>
+       <button onClick ={incrementCount} style = {{width: "100px"}}>+</button>
+      </div>
     </div>
   );
 }
